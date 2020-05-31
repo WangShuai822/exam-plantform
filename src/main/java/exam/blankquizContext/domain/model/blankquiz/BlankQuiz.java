@@ -2,8 +2,10 @@ package exam.blankquizContext.domain.model.blankquiz;
 
 import exam.blankquizContext.domain.shared.Entity;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class BlankQuiz implements Entity<BlankQuiz> {
     private BlankQuizId blankQuizId;
     private String content;

@@ -1,0 +1,5 @@
+@startuml
+user -> blankQuizController: add
+blankQuizController -> domain: addBlankQuiz
+user <- BlankQuiz
+@enduml
