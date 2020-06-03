@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class PaperTest {
+public class PaperTest extends BaseTest{
 
 
     @Test
@@ -48,5 +49,13 @@ public class PaperTest {
 
             Paper paper = Paper.assemble(paperId, teacherId, blankQuizzes);
         });
+    }
+
+    @Test
+    public void should_return_detail_when_query_blank_quiz() {
+        given().when()
+                .get("/papers/blankQuiz/1111")
+                .then().log().all()
+                .body("content",notNullValue());
     }
 }
