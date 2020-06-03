@@ -3,6 +3,7 @@ package exam.blankquizContext.userInterface;
 import exam.blankquizContext.application.CreateBlankQuizCommand;
 import exam.blankquizContext.domain.model.blankquiz.BlankQuiz;
 import exam.blankquizContext.application.BlankQuizService;
+import exam.paperContext.infrastructure.BlankQuizVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -28,4 +29,9 @@ public class BlankQuizController {
         return blankQuizService.getBlankQuizList();
     }
 
+    @DeleteMapping("/delete/{blankQuizId}")
+    @ResponseStatus(HttpStatus.OK)
+    boolean delete(@PathVariable String blankQuizId) {
+        return blankQuizService.deleteBlankQuizById(blankQuizId);
+    }
 }

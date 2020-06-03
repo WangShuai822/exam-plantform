@@ -1,5 +1,7 @@
 package exam.paperContext.domain.model.paper;
 
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -39,5 +41,23 @@ public class BlankQuizTest extends BaseTest{
                 .get("/blankQuiz/list")
                 .then()
                 .body("score",hasItem(3));
+    }
+
+    @Test
+    public void should_return_true_when_delete_blankQuiz() throws JSONException {
+        JSONObject body = new JSONObject();
+        body.put("content", "someContent1");
+        body.put("score", 3);
+        String blankQuizId = given().contentType("application/json")
+                .body(body.toString())
+                .when()
+                .post("/blankQuiz/add")
+                .then().log().all()
+                .extract().path("blankQuizId.id");
+
+        given().when()
+                .delete("/blankQuiz/delete/" + blankQuizId)
+                .then()
+                .statusCode(200);
     }
 }

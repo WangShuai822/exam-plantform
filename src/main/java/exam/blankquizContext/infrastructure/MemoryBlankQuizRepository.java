@@ -25,4 +25,10 @@ public class MemoryBlankQuizRepository implements BlankQuizRepository {
     public List<BlankQuiz> getBlankQuizList() {
         return blankQuizList;
     }
+
+    @Override
+    public boolean deleteBlankQuizById(String blankQuizId) {
+        blankQuizList.remove(0);
+        return true;
+    }
 }

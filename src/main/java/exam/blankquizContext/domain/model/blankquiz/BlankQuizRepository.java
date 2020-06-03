@@ -6,4 +6,6 @@ public interface BlankQuizRepository {
     BlankQuiz save(BlankQuiz blankQuiz);
 
     List<BlankQuiz> getBlankQuizList();
+
+    boolean deleteBlankQuizById(String blankQuizId);
 }
