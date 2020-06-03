@@ -2,10 +2,12 @@ package exam.blankquizContext.userInterface;
 
 import exam.blankquizContext.application.CreateBlankQuizCommand;
 import exam.blankquizContext.domain.model.blankquiz.BlankQuiz;
-import exam.blankquizContext.domain.service.BlankQuizService;
+import exam.blankquizContext.application.BlankQuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/blankQuiz")
@@ -19,6 +21,11 @@ public class BlankQuizController {
     @ResponseStatus(HttpStatus.CREATED)
     BlankQuiz add(@RequestBody CreateBlankQuizCommand command) {
         return blankQuizService.create(command);
+    }
+
+    @GetMapping("/list")
+    List<BlankQuiz> getBlankQuizList (){
+        return blankQuizService.getBlankQuizList();
     }
 
 }

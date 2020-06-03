@@ -20,4 +20,9 @@ public class MemoryBlankQuizRepository implements BlankQuizRepository {
         blankQuizList.add(blankQuiz);
         return blankQuiz;
     }
+
+    @Override
+    public List<BlankQuiz> getBlankQuizList() {
+        return blankQuizList;
+    }
 }
